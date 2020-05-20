@@ -1,0 +1,144 @@
+<!--
+  Generated template for the CheckoutProcessPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="Open-Sans-bold">
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Checkout</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content style="background-color:#eee" class="Open-Sans-regular">
+
+  <!--<ion-list style="padding: 10px; margin-bottom: 0;">
+    <ion-list-header style="color:#bbd164;font-weight:bold">
+      Payment Method
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Paypal</ion-label>
+      <ion-checkbox [(ngModel)]="paypal" (ionChange)="paypalbox()"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Credit card</ion-label>
+      <ion-checkbox [(ngModel)]="creditcard" (ionChange)="creditcardbox()"></ion-checkbox>
+    </ion-item>
+  </ion-list>-->
+  <!--<ion-list style="padding: 10px; margin-bottom: 0;">
+    <ion-list-header style="color:#bbd164;font-weight:bold">
+      Payment Method
+    </ion-list-header>
+    <ion-col>
+      <ion-item>
+        <ion-label>Paypal</ion-label>
+        <ion-radio mode="md" [checked]="this.payment === 'paypal'" value="paypal" (ionSelect)="selectPayment('paypal')"></ion-radio>
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-item>
+        <ion-label>Credit card</ion-label>
+        <ion-radio mode="md" [checked]="this.payment === 'creditcard'" value="creditcard" (ionSelect)="selectPayment('creditcard')"></ion-radio>
+      </ion-item>
+    </ion-col>
+  </ion-list>-->
+
+  <!--<ion-row>
+    <ion-col style="margin:auto">
+      <img src="assets/img/mastercard.png">
+    </ion-col>
+    <ion-col style="margin:auto">
+
+      <img src="assets/img/discover-card.png">
+
+    </ion-col>
+    <ion-col style="margin:auto">
+
+      <img src="assets/img/american-express-logo.jpg">
+    </ion-col>
+    <ion-col style="margin:auto">
+      <img src="assets/img/visa.png">
+    </ion-col>
+
+  </ion-row>-->
+
+
+  <p class="Open-Sans-regular" style="font-family: Open Sans;" *ngIf="submitAttempt" style="color: #ea6153; text-align:center;">Please fill out all details accurately.</p>
+  <form [formGroup]="ProcessForm" ng-submit="process(this.ProcessForm.value)">
+
+    <ion-list style="padding: 10px; margin-bottom: 10px;">
+
+      <ion-list-header style="color:#bbd164;font-weight:bold;border-bottom:none">
+        Info
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label floating>Full Name</ion-label>
+        <!--<ion-input *ngIf="Dine" disabled="true" formControlName="Address"></ion-input>-->
+        <ion-input formControlName="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Phone</ion-label>
+        <!--<ion-input *ngIf="Dine" disabled="true" formControlName="Address"></ion-input>-->
+        <ion-input type="text" formControlName="phone"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Address</ion-label>
+        <!--<ion-input *ngIf="Dine" disabled="true" formControlName="Address"></ion-input>-->
+        <ion-input formControlName="Address"></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label floating>City</ion-label>
+        <!--<ion-input *ngIf="Dine" disabled="true" formControlName="city"></ion-input>-->
+        <ion-input formControlName="city"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>State</ion-label>
+        <!--<ion-input *ngIf="Dine" disabled="true" formControlName="state"></ion-input>-->
+        <ion-input formControlName="state"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Zip Code</ion-label>
+        <!--<ion-input *ngIf="Dine" disabled="true" formControlName="zipcode"></ion-input>-->
+        <ion-input type="number" formControlName="zipcode"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input type="text" formControlName="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Amount</ion-label>
+        <ion-input type="text" formControlName="total" value="$0.00" (ionChange)="formataNumero($event)"></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <!--<ion-list no-lines style="padding: 10px;    margin-bottom: 0;">
+ 
+      <ion-item style="border-radius: 20px;">
+        <ion-label>Save address</ion-label>
+        <ion-checkbox formControlName="addresscheck"></ion-checkbox>
+      </ion-item>
+    </ion-list>-->
+  </form>
+
+
+
+  <button ion-button type="submit" (click)="payOnline()" (click)="process(this.ProcessForm.value)" style="background:#bbd164 !important;width:80%; margin-left:10%;"
+    block> Continue With Payment </button>
+  <button ion-button (click)="cancel()" style="width:80%; margin-left:10%;background:#bbd164 !important;" block> Cancel </button>
+
+</ion-content>

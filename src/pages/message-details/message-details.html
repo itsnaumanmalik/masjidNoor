@@ -1,0 +1,70 @@
+<!--
+  Generated template for the MessageDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Announcement Details</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div>
+    <img [src]="eventsDetail.pic_url" class="slide-image" style="height: 400px !important;width: 100%;" />
+  </div>
+  <div style="cursor:pointer">
+    <ion-list>
+      <!--<ion-row padding>
+        <ion-col col-6 style="cursor:pointer;color:#bbd164 !important"><b>{{show.date}}</b></ion-col>
+        <ion-col col-6 style="cursor:pointer;color:#bbd164 !important"><b>{{show.timing}}</b></ion-col>
+      </ion-row>-->
+      <ion-row padding>
+        <ion-col col-7 style="cursor:pointer;color:#bbd164 !important;font-size: 12px;"><b>{{eventsDetail.date}}</b></ion-col>
+        <ion-col col-5 style="cursor:pointer;color:#bbd164 !important;font-size: 12px;"><b>{{eventsDetail.timing}}</b></ion-col>
+      </ion-row>
+      <ion-row>
+        <p style="cursor:pointer;" text-wrap padding><b>{{this.eventsDetail.description}}</b></p>
+      </ion-row>
+      <ion-row>
+        <p style="cursor:pointer" text-wrap padding><b>{{this.eventsDetail.address}}</b></p>
+      </ion-row>
+      <ion-row (click)="call(this.eventsDetail.phone)">
+        <ion-item style="cursor:pointer;color:#bbd164 !important">{{this.eventsDetail.phone}}</ion-item>
+      </ion-row>
+      <ion-row (click)="Email(this.eventsDetail.email)">
+        <ion-item style="cursor:pointer;color:#bbd164 !important">{{this.eventsDetail.email}}</ion-item>
+      </ion-row>
+      <ion-row (click)="weburl(this.eventsDetail.website)">
+        <ion-item style="cursor:pointer;color:#bbd164 !important">{{this.eventsDetail.website}}</ion-item>
+      </ion-row>
+    </ion-list>
+  </div>
+  <!--<div *ngFor="let show of event">
+    <img [src]="show.pic_url" class="slide-image" style="height: 400px !important;width: 100%;" />
+  </div>
+  <div *ngFor="let show of event" style="cursor:pointer">
+    <ion-list>
+      <ion-row padding>
+        <ion-col col-7 style="cursor:pointer;color:#bbd164 !important;font-size: 12px;"><b>{{show.date}}</b></ion-col>
+        <ion-col col-5 style="cursor:pointer;color:#bbd164 !important;font-size: 12px;"><b>{{show.timing}}</b></ion-col>
+      </ion-row>
+      <ion-row >
+        <p style="cursor:pointer;" text-wrap padding><b>{{show.description}}</b></p>
+      </ion-row>
+      <ion-row padding>
+        <p style="cursor:pointer" text-wrap><b>{{show.address}}</b></p>
+      </ion-row>
+      <ion-row (click)="call(phone)" padding>
+        <ion-item style="cursor:pointer;color:#bbd164 !important"><b>{{show.phone}}</b></ion-item>
+      </ion-row>
+      <ion-row (click)="Email(email)" padding>
+        <ion-item style="cursor:pointer;color:#bbd164 !important"><b>{{show.email}}</b></ion-item>
+      </ion-row>
+      <ion-row (click)="weburl(show.website)" padding>
+        <ion-item style="cursor:pointer;color:#bbd164 !important"><b>{{show.website}}</b></ion-item>
+      </ion-row>
+    </ion-list>
+  </div>-->
+</ion-content>

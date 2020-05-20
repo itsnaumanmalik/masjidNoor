@@ -1,0 +1,103 @@
+<!--
+  Generated template for the Payment page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Payment</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content style="background-color:#eee" class="Open-Sans-regular">
+  <!--<p class="Open-Sans-regular" style="font-family: Open Sans;" *ngIf="submitAttempt" style="color: #ea6153; text-align:center;">Please fill out all details accurately.</p>
+  <form [formGroup]="PaymentForm" ng-submit="pay(this.PaymentForm.value)">
+    <ion-list style="padding: 10px;">
+      <ion-item>
+        <ion-label floating>Card Number</ion-label>
+        <ion-input formControlName="creditcardno"></ion-input>
+      </ion-item>
+      <div class="no-border" *ngIf="!PaymentForm.controls.creditcardno.valid  &&
+        (PaymentForm.controls.creditcardno.dirty || submitAttempt)">
+        <p style="color: #ea6153;text-align:center;">Please enter a valid card number.</p>
+      </div>
+
+      <ion-item>
+        <ion-label floating>Expiry Month--(MM)</ion-label>
+        <ion-input formControlName="expiryMonth"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Expiry Year--(YYYY)</ion-label>
+        <ion-input formControlName="expiryYear"></ion-input>
+      </ion-item>
+      <ion-item style="width:50%">
+
+        <ion-label floating>CVV</ion-label>
+
+        <ion-input formControlName="CVC"></ion-input>
+      </ion-item>
+      <div style="    width: 50%; float: right;margin-top: -25%;">
+        <img src="assets/img/cvv.jpg">
+      </div>
+    </ion-list>-->
+
+    <!--<ion-list no-lines style="padding:10px">
+    <ion-item style="border-radius: 20px;">
+    <ion-label>Save creditcard information</ion-label>
+    <ion-checkbox formControlName="cardinfo"  (ionChange)="Savecreditcard()"></ion-checkbox>
+  </ion-item>
+
+ </ion-list>-->
+
+
+
+
+    <!--<ion-label style="font-size:2.5rem;font-weight: bold; color:white; padding:10px; background:#bbd164 !important; margin-left: 8px;">
+    Total
+      <p style="float:right;font-size:2.5rem;color:white;margin:0"> ${{amount}}</p>
+    </ion-label>
+
+
+    <button ion-button type="submit" (click)="pay(this.PaymentForm.value)" style="margin-top: 10%;width:80%; margin-left:10%; background:#bbd164 !important;"
+      block>Make Payment </button>
+  </form>-->
+
+
+
+  <!--<ion-content>
+ <ion-label floating>Card Number</ion-label>
+<ion-input [(ngModel)]="cardinfo.number" placeholder="card number"></ion-input>
+ <ion-label floating>Expiry Month</ion-label>
+<ion-input [(ngModel)]="cardinfo.expMonth" placeholder="expiry month"></ion-input>
+ <ion-label floating>Expiry Year</ion-label>
+<ion-input [(ngModel)]="cardinfo.expYear" placeholder="expiry year"></ion-input>
+ <ion-label floating>CVC</ion-label>
+<ion-input [(ngModel)]="cardinfo.cvc" placeholder="cvc"></ion-input>
+<button ion-button (click)="pay()"> Pay Now </button>-->
+
+  
+  <form action="/" method="post" id="payment-form">
+
+    <div class="form-row">
+      <div id="card-element">
+        <!-- a Stripe Element will be inserted here. -->
+
+      </div>
+
+      <!-- Used to display Element errors -->
+      <div id="card-errors" role="alert"></div>
+    </div>
+
+    <button ion-button style="width:80%; margin-left:10%;background:#bbd164 !important;" block>Make Payment</button>
+    <button ion-button (click)="cancel()" style="width:80%; margin-left:10%;background:#bbd164 !important;" block> Cancel </button>
+
+  </form>
+
+</ion-content>

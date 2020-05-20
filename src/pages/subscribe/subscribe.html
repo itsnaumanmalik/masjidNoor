@@ -1,0 +1,92 @@
+<!--
+  Generated template for the SubscribePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Subscribe</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <p class="Open-Sans-regular" style="font-family: Open Sans;" *ngIf="submitAttempt" style="color: #ea6153; text-align:center;">Please fill out all details accurately.</p>
+  <ion-list>
+    <form class="Open-Sans-regular" [formGroup]="loginForm" ng-submit="login(this.loginForm.value)">
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>First Name</ion-label>
+            <!--<ion-input type="submit" [(ngModel)]="name" formControlName="name" value=""></ion-input>-->
+            <ion-input type="submit" formControlName="fname" type="text"></ion-input>
+          </ion-item>
+
+          <div class="no-border" *ngIf="!loginForm.controls.fname.valid  &&
+        (loginForm.controls.fname.dirty || submitAttempt)">
+            <p style="color: #ea6153; font-family: Open Sans;  text-align:center; ">Please enter your First name.</p>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>Last Name</ion-label>
+            <!--<ion-input type="submit" [(ngModel)]="name" formControlName="name" value=""></ion-input>-->
+            <ion-input type="submit" formControlName="lname" type="text"></ion-input>
+          </ion-item>
+
+          <div class="no-border" *ngIf="!loginForm.controls.lname.valid  &&
+        (loginForm.controls.lname.dirty || submitAttempt)">
+            <p style="color: #ea6153; font-family: Open Sans;  text-align:center; ">Please enter your Last name.</p>
+          </div>
+        </ion-col>
+      </ion-row>
+
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>Email</ion-label>
+            <!--<ion-input type="email" [(ngModel)]="email" formControlName="email" value=""></ion-input>-->
+            <ion-input type="submit" formControlName="email" type="email"></ion-input>
+          </ion-item>
+          <div class="no-border" *ngIf="!loginForm.controls.email.valid  &&
+        (loginForm.controls.email.dirty || submitAttempt)">
+            <p style="color: #ea6153; font-family: Open Sans;  text-align:center; ">Please enter a valid email.</p>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>Contact No:</ion-label>
+            <!--<ion-input type="number" [(ngModel)]="mobile" formControlName="mobile" value=""></ion-input>-->
+            <ion-input type="submit" formControlName="mobile" type="text"></ion-input>
+          </ion-item>
+          <div class="no-border" *ngIf="!loginForm.controls.mobile.valid  &&
+        (loginForm.controls.mobile.dirty || submitAttempt)">
+            <p style="color: #ea6153; font-family: Open Sans;  text-align:center; ">Please enter a valid mobile number.</p>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-item>
+        <ion-label>NewsLetter Email</ion-label>
+        <ion-checkbox type="checkbox" formControlName="check_box" value="yes" checked="true" ></ion-checkbox>
+      </ion-item>
+
+    </form>
+
+  </ion-list>
+
+  <div padding>
+
+    <button ion-button style="background-color:#bbd164;" type="submit" (tap)="SubmitToServer(this.loginForm.value)" full>Subscribe</button>
+    <p style="color:red;margin-top:1%;">All of your personal information will remain confidential.</p>
+  </div>
+</ion-content>

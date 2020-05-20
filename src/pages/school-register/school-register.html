@@ -1,0 +1,281 @@
+<!--
+  Generated template for the SchoolRegisterPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>School Registration</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <p class="Open-Sans-regular" style="font-family: Open Sans;" *ngIf="submitAttempt" style="color: #ea6153; text-align:center;">Please fill out all details accurately.</p>
+  <ion-list>
+    <form class="Open-Sans-regular" [formGroup]="loginForm" ng-submit="login(this.loginForm.value)">
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>First Name</ion-label>
+            <!--<ion-input type="submit" [(ngModel)]="name" formControlName="name" value=""></ion-input>-->
+            <ion-input type="submit" formControlName="fname" type="text"></ion-input>
+          </ion-item>
+
+          <div class="no-border" *ngIf="!loginForm.controls.fname.valid  &&
+        (loginForm.controls.fname.dirty || submitAttempt)">
+            <p style="color: #ea6153; font-family: Open Sans;  text-align:center; ">Please enter your First name.</p>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>Last Name</ion-label>
+            <!--<ion-input type="submit" [(ngModel)]="name" formControlName="name" value=""></ion-input>-->
+            <ion-input type="submit" formControlName="lname" type="text"></ion-input>
+          </ion-item>
+
+          <div class="no-border" *ngIf="!loginForm.controls.lname.valid  &&
+        (loginForm.controls.lname.dirty || submitAttempt)">
+            <p style="color: #ea6153; font-family: Open Sans;  text-align:center; ">Please enter your Last name.</p>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label>Male</ion-label>
+            <ion-radio mode="md" [checked]="this.gender === 'Male'" value="Male" (ionSelect)="selectGender('Male')"></ion-radio>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label>Female</ion-label>
+            <ion-radio mode="md" [checked]="this.gender === 'Female'" value="Female" (ionSelect)="selectGender('Female')"></ion-radio>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>Age</ion-label>
+            <!--<ion-input type="submit" [(ngModel)]="name" formControlName="name" value=""></ion-input>-->
+            <ion-input type="submit" formControlName="age" type="text"></ion-input>
+          </ion-item>
+
+          <div class="no-border" *ngIf="!loginForm.controls.age.valid  &&
+        (loginForm.controls.age.dirty || submitAttempt)">
+            <p style="color: #ea6153; font-family: Open Sans;  text-align:center; ">Please enter your Age.</p>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label>Grade entering in School</ion-label>
+            <ion-select [(ngModel)]="grade_entering" formControlName="grade_entering" interface="action-sheet" (ionChange)="gradeEntering(grade_entering);">
+              <ion-option value="1">1</ion-option>
+              <ion-option value="2">2</ion-option>
+              <ion-option value="3">3</ion-option>
+              <ion-option value="4">4</ion-option>
+              <ion-option value="5">5</ion-option>
+              <ion-option value="6">6</ion-option>
+              <ion-option value="7">7</ion-option>
+              <ion-option value="8">8 </ion-option>
+              <ion-option value="9">9</ion-option>
+            </ion-select>
+          </ion-item>
+          <div class="no-border" *ngIf="!loginForm.controls.grade_entering.valid  &&
+        (loginForm.controls.grade_entering.dirty || submitAttempt)">
+            <p style="color: #ea6153; font-family: Open Sans;  text-align:center; ">Please enter your Grade.</p>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label>Grade attended at Masjid Noor last year?</ion-label>
+            <ion-select [(ngModel)]="grade_attended" formControlName="grade_attended" interface="action-sheet" (ionChange)="gradeAttended(grade_attended);">
+              <ion-option value="first_time">First Time Attending</ion-option>
+              <ion-option value="1">1</ion-option>
+              <ion-option value="2">2</ion-option>
+              <ion-option value="3">3</ion-option>
+              <ion-option value="4">4</ion-option>
+              <ion-option value="5">5</ion-option>
+              <ion-option value="Pre-6">Pre-6</ion-option>
+              <ion-option value="6">6</ion-option>
+              <ion-option value="7">7</ion-option>
+              <ion-option value="8">8 </ion-option>
+              <ion-option value="9">9</ion-option>
+            </ion-select>
+          </ion-item>
+          <div class="no-border" *ngIf="!loginForm.controls.grade_attended.valid  &&
+        (loginForm.controls.grade_attended.dirty || submitAttempt)">
+            <p style="color: #ea6153; font-family: Open Sans;  text-align:center; ">Please enter your Grade Attended.</p>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>Parent/Guardian Name</ion-label>
+            <!--<ion-input type="email" [(ngModel)]="email" formControlName="email" value=""></ion-input>-->
+            <ion-input type="submit" formControlName="parent_name" type="text"></ion-input>
+          </ion-item>
+          <div class="no-border" *ngIf="!loginForm.controls.parent_name.valid  &&
+        (loginForm.controls.parent_name.dirty || submitAttempt)">
+            <p style="color: #ea6153; font-family: Open Sans;  text-align:center; ">Please enter Parent/Guardian name.</p>
+          </div>
+        </ion-col>
+      </ion-row>
+
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>Parent/Guardian Phone</ion-label>
+            <!--<ion-input type="email" [(ngModel)]="email" formControlName="email" value=""></ion-input>-->
+            <ion-input type="submit" formControlName="parent_phone" type="text"></ion-input>
+          </ion-item>
+          <div class="no-border" *ngIf="!loginForm.controls.parent_phone.valid  &&
+        (loginForm.controls.parent_phone.dirty || submitAttempt)">
+            <p style="color: #ea6153; font-family: Open Sans;  text-align:center; ">Please enter Parent phone.</p>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>Phone No. to receive text messages</ion-label>
+            <!--<ion-input type="number" [(ngModel)]="mobile" formControlName="mobile" value=""></ion-input>-->
+            <ion-input type="submit" formControlName="parents_phone_text" type="text"></ion-input>
+          </ion-item>
+          <div class="no-border" *ngIf="!loginForm.controls.parents_phone_text.valid  &&
+        (loginForm.controls.parents_phone_text.dirty || submitAttempt)">
+            <p style="color: #ea6153; font-family: Open Sans;  text-align:center; ">Please enter phone number to receive text messages.</p>
+          </div>
+        </ion-col>
+      </ion-row>
+
+
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>Home Address (Enter Full Address) </ion-label>
+            <!--<ion-input type="number" [(ngModel)]="mobile" formControlName="mobile" value=""></ion-input>-->
+            <ion-input type="submit" formControlName="address" type="text"></ion-input>
+          </ion-item>
+          <div class="no-border" *ngIf="!loginForm.controls.address.valid  &&
+        (loginForm.controls.address.dirty || submitAttempt)">
+            <p style="color: #ea6153; font-family: Open Sans;  text-align:center; ">Please enter your Home address.</p>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>Parent/Guardian email address</ion-label>
+            <!--<ion-input type="number" [(ngModel)]="mobile" formControlName="mobile" value=""></ion-input>-->
+            <ion-input type="submit" formControlName="parent_email" type="text"></ion-input>
+          </ion-item>
+          <div class="no-border" *ngIf="!loginForm.controls.parent_email.valid  &&
+        (loginForm.controls.parent_email.dirty || submitAttempt)">
+            <p style="color: #ea6153; font-family: Open Sans;  text-align:center; ">Please enter your Parent/Guardian email address.</p>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-label text-wrap padding>Program(s) the student will be attending</ion-label>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label>Maktab</ion-label>
+            <ion-radio mode="md" [checked]="this.program_attending === 'maktab'" value="maktab" (ionSelect)="programAttending('maktab')"></ion-radio>
+          </ion-item>
+        </ion-col>
+        <ion-col >
+          <ion-item>
+            <ion-label>Saturday School</ion-label>
+            <ion-radio mode="md" [checked]="this.program_attending === 'saturday_school'" value="saturday_school" (ionSelect)="programAttending('saturday_school')"> </ion-radio>
+          </ion-item>
+        </ion-col>
+        <ion-col >
+          <ion-item>
+            <ion-label>Both</ion-label>
+            <ion-radio mode="md" [checked]="this.program_attending === 'both'" value="both" (ionSelect)="programAttending('both')"></ion-radio>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-label text-wrap padding>Payment options ($250/child-Saturday)($40/month Maktab)</ion-label>
+      <ion-row>
+        <!--<ion-col>
+          <ion-item>
+            <ion-label>In person - Check/Cash</ion-label>
+            <ion-radio mode="md" [checked]="this.payment_option === 'cash'" value="cash" (ionSelect)="paymentOption('cash')"></ion-radio>
+          </ion-item>
+        </ion-col>-->
+        <ion-col>
+          <ion-item>
+            <ion-label>Online - Credit-Card/Paypal</ion-label>
+            <ion-radio mode="md" [checked]="this.payment_option === 'paypal'" value="paypal" (ionSelect)="paymentOption('paypal')"></ion-radio>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <!--<ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label>I agree with Masjid Rules</ion-label>
+            <ion-radio name="masjid_rules" value="masjid_rules" (ionSelect)="rulesOption('masjid_rules')" [checked]='false'></ion-radio>
+          </ion-item>
+        </ion-col>
+        </ion-row>
+        <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label>I agree with Waiver</ion-label>
+            <ion-radio  name="waiver_rules" value="waiver_rules"  (ionSelect)="rulesOption('waiver_rules')" [checked]='false'></ion-radio>
+          </ion-item>
+        </ion-col>
+      </ion-row>-->
+      <ion-row style="margin-top:10% !important">
+        <ion-col>
+          <ion-item>
+            <ion-label>I agree to Masjid Rules</ion-label>
+            <ion-checkbox name="masjid_rules" value="masjid_rules" (ionChange) = "changeEvent()" *ngIf="!isenabled" ></ion-checkbox>
+          </ion-item>
+        </ion-col>
+        </ion-row>
+
+        <!--<ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label>I agree with Waiver</ion-label>
+            <ion-checkbox name="waiver_rules" value="waiver_rules" (ionChange) = "changeEvent()" *ngIf="!isenabled" ></ion-checkbox>
+          </ion-item>
+        </ion-col>
+        </ion-row>-->
+
+    </form>
+
+  </ion-list>
+
+  <div padding>
+
+    <button ion-button style="background-color:#bbd164;" type="submit" (tap)="SubmitToServer(this.loginForm.value)" [disabled]="!isenabled" full> Get Register</button>
+    <p style="color:red;margin-top:1%;">All of your personal information will remain confidential.</p>
+  </div>
+</ion-content>

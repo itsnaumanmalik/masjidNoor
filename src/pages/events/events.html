@@ -1,0 +1,54 @@
+<!--
+  Generated template for the EventsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Programs</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div>
+      <img src="assets/img/header.jpg" style="width: 100% !important;height: 150px !important;">
+      <div style="background:#bbd164; padding: 5px;     position: relative; bottom: 5px;">
+        <ion-select [selectOptions]="selectOptions" (ionChange)="CategoryChange()" placeholder="Select your category" style="font-size: 1.6rem; color: white; max-width: none;padding:1% !important;"
+          *ngIf="categories_list" [(ngModel)]="category">
+          <div *ngFor="let category of categories_list ">
+            <ion-option value="{{category.name}}">{{category.name}}</ion-option>
+          </div>
+          <ion-option value="all">All</ion-option>
+        </ion-select>
+      </div>
+  </div>
+  <p *ngIf="noCategory" style="text-align: center;
+  font-size: 1.8rem;color:black;background-color:#bbd164"> No Programs for this category. </p>
+  <ion-card *ngFor="let show of events" style="cursor:pointer">
+    <ion-list (click)="details(show)">
+      <!--<ion-row>
+        <ion-item style="cursor:pointer;border-bottom:1.5px solid #bbd164 !important">{{show.date}}
+        </ion-item>
+      </ion-row>-->
+      <ion-row style="border-bottom:1.5px solid #bbd164 !important">
+        <ion-col col-7 style="cursor:pointer;color:#bbd164 !important;font-size: 12px;"><b>{{show.date}}</b></ion-col>
+        <ion-col col-5 style="cursor:pointer;color:#bbd164 !important;font-size: 12px;"><b>{{show.timing}}</b></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-item style="cursor:pointer"><b>{{show.title}}</b></ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-item>{{show.description}}</ion-item>
+      </ion-row>
+       <ion-row>
+         <ion-col col-6 padding style="color:#bbd164 !important"></ion-col>
+         <ion-col col-1 ></ion-col>
+        <ion-col  col-5 padding style="text-align: right;color:#bbd164 !important">{{show.category}}</ion-col>
+      </ion-row>
+    </ion-list>
+  </ion-card>
+</ion-content>

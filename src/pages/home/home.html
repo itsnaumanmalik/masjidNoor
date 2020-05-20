@@ -1,0 +1,403 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title style="color:white !important;">Masjid Noor LI</ion-title>
+    <!--<ion-buttons end>
+      <button ion-button (click)="addMarker()"><ion-icon name="add"></ion-icon>Add Marker</button>
+    </ion-buttons>-->
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <!--<ion-card style="background-color:yellow;">-->
+  <!--<div #map="" id="map"></div>-->
+  <!--</ion-card>-->
+  <!--<div #mapCanvas class="map-canvas"></div>-->
+  <ion-scroll style="height: calc(100% - 6rem)" scrollY="true">
+
+    <!--<ion-row style="background-color:#bbd164 !important;padding: 0%;height: 8% !important; align-content: center;" *ngFor="let link of links">
+      
+      <ion-col col-4 (click)="tap2();">
+        <p style="color:white;text-align: center;">
+          <ion-icon name="compass" style="text-align: center;"></ion-icon>
+          Location
+        </p>
+      </ion-col>
+      <ion-col col-4 (click)="weburl(link.website_link)">
+        <p style="color:white;text-align: center;">
+          <ion-icon name="globe" style="text-align: center;"></ion-icon>
+          Website
+        </p>
+
+      </ion-col>
+      <ion-col col-4 (click)="weburl(link.youtube_link)">
+        <p style="color:white;text-align: center;">
+          <ion-icon name="logo-youtube"></ion-icon>
+          Youtube
+        </p>
+      </ion-col>
+
+    </ion-row>-->
+
+    <!--<ion-slides autoplay="2000" speed="2000" loop="true" autoplayDisableOnInteraction="false" style="height:225px !important;">
+    <ion-slide *ngFor="let slide of slides">
+      <img [src]="slide.image" class="slide-image" style="width:100% !important;height:225px !important;" (click)="launch()"/>
+    </ion-slide>
+  </ion-slides>-->
+    <ion-slides *ngIf="Images && Images.length" loop="true" autoplay="2000" speed="2000" autoplayDisableOnInteraction="false"
+      style="height:225px !important;">
+      <ion-slide *ngFor="let slide of Images">
+        <!--<img [src]="slide.slider_image" class="slide-image" style="width:100% !important;height:225px !important;" (click)="launch()"
+        />-->
+        <img [src]="slide.pic_url" class="slide-image" style="width:100% !important;height:225px !important;" (click)="launch()"
+        />
+      </ion-slide>
+    </ion-slides>
+    <!--<p style="background-color:white;"></p>-->
+    <ion-row mode="md" style="margin-bottom: 5px;margin-top: 2px;background-color:#bbd164 !important;padding: 0%;height: 8% !important; align-content: center;">
+      <ion-col col-2>
+        <!--<p mode="md" style="margin: auto; padding-left: 1%;padding-top: 6.1%;padding-bottom: 10%;text-align:center;color:white !important;"></p>-->
+      </ion-col>
+      <ion-col col-8>
+        <p mode="md" style=" margin: auto; padding: 3%; text-align:center;color:white !important;">{{this.showDate}}</p>
+      </ion-col>
+      <!--<ion-col col-2></ion-col>-->
+    </ion-row>
+
+    <ion-row style="background-color:#bbd164 !important;padding: 0%;height: 8% !important; align-content: center;">
+      <ion-col col-4 *ngFor="let time of salat">
+        <p style="margin: auto; padding: 5%;text-align:center;color:white">{{time.date}}</p>
+      </ion-col>
+
+      <ion-col col-4>
+        <p style="margin: auto; padding: 5%;text-align:center;color:white;margin-left: 33%;">Adhaan</p>
+      </ion-col>
+
+      <ion-col col-4>
+        <p style="margin: auto; padding: 5%;text-align:center;color:white;margin-left: 23%;">Iqamah</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-card style="margin-left: 5px !important; width: 97% !important;margin-right: 3px !important;">
+      <ion-list>
+        <ion-item *ngFor="let time of salat" style="padding-left:0px !important;padding-right:0px !important;">
+          <ion-row style="border-bottom: 1px solid #bbd164 !important; margin-top:2% !important;margin-bottom: 2% !important;">
+            <ion-col col-1>
+              <img src="assets/img/fajar.png" style="height:17.7px !important; width:16.8px !important" />
+            </ion-col>
+            <ion-col col-3>
+              <p style="text-align:left;font-weight: bold;">
+                <!--<ion-icon name="ios-sunny"></ion-icon>-->
+                {{time.fajar_salat}}
+                <!--<span mode="md" id="demo" style="text-align:right;font-size: 16px; display:inline-block;margin-left: 16px;  margin-top: 0px; color:red;">
+                 <ion-icon name="arrow-round-forward" style="font-size: 1em !important;color:red"></ion-icon>
+                </span>-->
+                <!--<div id="clockdiv">
+                  <div>
+                    <span class="minutes"></span> m
+                    <span class="seconds"></span> s
+                  </div>
+                </div>-->
+                <!--<span mode="md" style="text-align:right;font-size: 16px; display:inline-block;margin-left: 16px;  margin-top: 0px; color:red;">{{displayTime}}</span>
+                -->
+                <!--<span style="color:red;">{{minutes}}m{{seconds}}s</span>-->
+              </p>
+            </ion-col>
+
+            <ion-col col-4>
+              <p style="text-align:right;">{{time.fajar_adhaan}}</p>
+            </ion-col>
+
+            <ion-col col-4>
+              <p style="text-align:right;">{{time.fajar_iqamah}}</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row style="border-bottom: 1px solid #bbd164 !important;margin-top:2% !important;margin-bottom: 2% !important;">
+            <ion-col col-1>
+              <img src="assets/img/sunrise.png" style="width:15.7px !important; height:17.8px !important" />
+            </ion-col>
+            <ion-col col-7>
+              <p style="text-align:left;font-weight: bold;">
+                <!--<ion-icon name="sunny"></ion-icon>-->
+
+                {{time.sunrise_name}}</p>
+            </ion-col>
+            <ion-col col-1>
+              <p style="text-align:center;">{{time.sunrise}}</p>
+            </ion-col>
+            <ion-col col-3>
+              <p style="text-align:right;"></p>
+            </ion-col>
+          </ion-row>
+          <ion-row style="border-bottom: 1px solid #bbd164 !important;margin-top:2% !important;margin-bottom: 2% !important;">
+            <ion-col col-1>
+              <img src="assets/img/zuhr.png" class="design" />
+            </ion-col>
+            <ion-col col-3>
+              <p style="text-align:left;font-weight: bold;">
+                <!--<ion-icon md="md-sunny"></ion-icon>-->
+                {{time.zuhr_salat}}
+                <!--<span mode="md" id="demo1" style="text-align:right;font-size: 16px; display:inline-block;margin-left: 16px;  margin-top: 0px; color:red;">
+                 <ion-icon name="arrow-round-forward" style="font-size: 1em !important;color:red"></ion-icon>
+                </span>-->
+                <!--<span mode="md" style="text-align:right;font-size: 16px; display:inline-block;margin-left: 16px;  margin-top: 0px; color:red;">{{displayTime}}</span>-->
+              </p>
+            </ion-col>
+
+            <ion-col col-4>
+              <p style="text-align:right;">{{time.zuhr_adhaan}}</p>
+            </ion-col>
+
+            <ion-col col-4>
+              <p style="text-align:right;">{{time.zuhr_iqamah}}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row style="border-bottom: 1px solid #bbd164 !important;margin-top:2% !important;margin-bottom: 2% !important;">
+            <ion-col col-1>
+              <img src="assets/img/asr.png" class="design" />
+            </ion-col>
+            <ion-col col-3>
+              <p style="text-align:left;font-weight: bold;">
+                <!--<ion-icon name="sunny"></ion-icon>-->
+                {{time.asr_salat}}
+                <!--<span mode="md" id="demo2" style="text-align:right;font-size: 16px; display:inline-block;margin-left: 16px;  margin-top: 0px; color:red;">
+                 <ion-icon name="arrow-round-forward" style="font-size: 1em !important;color:red"></ion-icon>
+                </span>-->
+                <!--<span mode="md" style="text-align:right;font-size: 16px; display:inline-block;margin-left: 16px;  margin-top: 0px; color:red;">{{displayTime}}</span>-->
+              </p>
+            </ion-col>
+
+            <ion-col col-4>
+              <p style="text-align:right;">{{time.asr_adhaan}}</p>
+            </ion-col>
+
+            <ion-col col-4>
+              <p style="text-align:right;">{{time.asr_iqamah}}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row style="border-bottom: 1px solid #bbd164 !important;margin-top:2% !important;margin-bottom: 2% !important;">
+            <ion-col col-1>
+              <img src="assets/img/magrib.png" class="design" />
+            </ion-col>
+            <ion-col col-3>
+              <p style="text-align:left;font-weight: bold;">
+                <!--<ion-icon md="ios-sunny"></ion-icon>-->
+                {{time.magrib_salat}}
+                <!--<span mode="md" id="demo3" style="text-align:right;font-size: 16px; display:inline-block;margin-left: 16px;  margin-top: 0px; color:red;">
+                 <ion-icon name="arrow-round-forward" style="font-size: 1em !important;color:red"></ion-icon>
+                </span>-->
+                <!--<span mode="md" style="text-align:right;font-size: 16px; display:inline-block;margin-left: 16px;  margin-top: 0px; color:red;">{{displayTime}}</span>-->
+              </p>
+            </ion-col>
+
+            <ion-col col-4>
+              <p style="text-align:right;">{{time.magrib_adhaan}}</p>
+            </ion-col>
+
+            <ion-col col-4>
+              <p style="text-align:right;">{{time.magrib_iqamah}}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row style="border-bottom: 1px solid #bbd164 !important;margin-top:2% !important;margin-bottom: 2% !important;">
+            <ion-col col-1>
+              <ion-icon name="moon" style="color:royalblue"></ion-icon>
+            </ion-col>
+            <ion-col col-3>
+              <p style="text-align:left;font-weight: bold;">
+                {{time.isha_salat}}
+                <!--<span mode="md" id="demo4" style="text-align:right;font-size: 16px; display:inline-block;margin-left: 16px;  margin-top: 0px; color:red;">
+                  <ion-icon name="arrow-round-forward" style="font-size: 1em !important;color:red"></ion-icon>
+                </span>-->
+                <!--<span mode="md" style="text-align:right;font-size: 16px; display:inline-block;margin-left: 16px;  margin-top: 0px; color:red;">{{displayTime}}</span>-->
+              </p>
+            </ion-col>
+
+            <ion-col col-4>
+              <p style="text-align:right;">{{time.isha_adhaan}}</p>
+            </ion-col>
+
+            <ion-col col-4>
+              <p style="text-align:right;">{{time.isha_iqamah}}</p>
+            </ion-col>
+          </ion-row>
+
+        </ion-item>
+      </ion-list>
+    </ion-card>
+
+    <!--<ion-row mode="md" style="background-color:#bbd164 !important;padding: 0%;height: 8% !important; align-content: center;">
+      <ion-col col-3></ion-col>
+      <ion-col col-6>
+        <p mode="md" style="margin: auto; padding: 5%;text-align:center; color:white !important;">COVID-19 Update</p>
+      </ion-col>
+      <ion-col col-3></ion-col>
+    </ion-row>-->
+
+    <ion-card mode="md" style="margin-left: 5px !important; width: 97% !important;margin-right: 3px !important;">
+      <ion-list>
+        <ion-item style="padding-left:0px !important;padding-right:0px !important;">
+          <ion-row mode="md" *ngFor="let link of links" style="border-bottom: 1px solid #bbd164 !important;margin-top:2% !important;margin-bottom: 2% !important;">
+            <ion-col col-2>
+              <p style="text-align:left;"></p>
+            </ion-col>
+            <ion-col mode="md" col-8 (click)="salah_calendar(link.covid19_update);">
+              <p mode="md" style="text-align:center;">COVID-19 Update</p>
+            </ion-col>
+            <ion-col col-2></ion-col>
+          </ion-row>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+
+    <!--<ion-row mode="md" style="background-color:#bbd164 !important;padding: 0%;height: 8% !important; align-content: center;">
+      <ion-col col-3></ion-col>
+      <ion-col col-6>
+        <p mode="md" style="margin: auto; padding: 5%;text-align:center; color:white !important;">Jumah Instructions</p>
+      </ion-col>
+      <ion-col col-3></ion-col>
+    </ion-row>-->
+
+    <ion-card mode="md" style="margin-left: 5px !important; width: 97% !important;margin-right: 3px !important;">
+      <ion-list>
+        <ion-item style="padding-left:0px !important;padding-right:0px !important;">
+          <ion-row mode="md" *ngFor="let link of links" style="border-bottom: 1px solid #bbd164 !important;margin-top:2% !important;margin-bottom: 2% !important;">
+            <ion-col col-2>
+              <p style="text-align:left;"></p>
+            </ion-col>
+            <ion-col mode="md" col-8 (click)="salah_calendar(link.jummah_instructions);">
+              <p mode="md" style="text-align:center;">Jumah Instructions</p>
+            </ion-col>
+            <ion-col col-2></ion-col>
+          </ion-row> 
+        </ion-item>
+      </ion-list>
+    </ion-card>
+
+    <!--<ion-row style="background-color:#bbd164 !important;padding: 0%;height: 8% !important; align-content: center;">
+      <ion-col col-4></ion-col>
+      <ion-col col-4>
+        <p style="margin: auto; padding: 5%;text-align:center; color:white !important;">Jummah</p>
+      </ion-col>
+      <ion-col col-4></ion-col>
+    </ion-row>-->
+
+    <!--<ion-card style="margin-left: 5px !important; width: 97% !important;margin-right: 3px !important;">
+      <ion-list>
+        <ion-item *ngFor="let time of jummah" style="padding-left:0px !important;padding-right:0px !important;">
+          <ion-row style="border-bottom: 1px solid #bbd164 !important;margin-top:2% !important;margin-bottom: 2% !important;">
+            <ion-col col-2>
+              <p style="text-align:left;"></p>
+            </ion-col>
+            <ion-col col-5>
+              <p style="text-align:left;">{{time.athan_name}}</p>
+            </ion-col>
+            <ion-col col-4>
+              <p style="text-align:center;">{{time.athan}}</p>
+            </ion-col>
+            <ion-col col-1>
+              <p style="text-align:right;"></p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row style="border-bottom: 1px solid #bbd164 !important;margin-top:2% !important;margin-bottom: 2% !important;">
+            <ion-col col-2>
+              <p style="text-align:left;"></p>
+            </ion-col>
+            <ion-col col-5>
+              <p style="text-align:left;">{{time.second_athan_name}}</p>
+            </ion-col>
+            <ion-col col-4>
+              <p style="text-align:center;">{{time.second_athan}}</p>
+            </ion-col>
+            <ion-col col-1>
+              <p style="text-align:right;"></p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row style="border-bottom: 1px solid #bbd164 !important;">
+            <ion-col col-2>
+              <p style="text-align:left;"></p>
+            </ion-col>
+            <ion-col col-5>
+              <p style="text-align:left;">{{time.student_jummah_name}}</p>
+            </ion-col>
+            <ion-col col-4>
+              <p style="text-align:center;">{{time.student_jumma}}</p>
+            </ion-col>
+            <ion-col col-1>
+              <p style="text-align:right;"></p>
+            </ion-col>
+          </ion-row>
+
+        </ion-item>
+      </ion-list>
+    </ion-card>-->
+    <ion-row mode="md" style="background-color:#bbd164 !important;padding: 0%;height: 8% !important; align-content: center;">
+      <ion-col col-3></ion-col>
+      <ion-col col-6>
+        <p mode="md" style="margin: auto; padding: 5%;text-align:center; color:white !important;">Salah Calendar</p>
+      </ion-col>
+      <ion-col col-3></ion-col>
+    </ion-row>
+
+    <ion-card mode="md" style="margin-left: 5px !important; width: 97% !important;margin-right: 3px !important;">
+      <ion-list>
+        <ion-item style="padding-left:0px !important;padding-right:0px !important;">
+          <ion-row mode="md" *ngFor="let link of links" style="border-bottom: 1px solid #bbd164 !important;margin-top:2% !important;margin-bottom: 2% !important;">
+            <ion-col col-2>
+              <p style="text-align:left;"></p>
+            </ion-col>
+            <ion-col mode="md" col-8 (click)="salah_calendar(link.salah_calendar);">
+              <p mode="md" style="text-align:center;">Current Month Calendar</p>
+            </ion-col>
+            <ion-col col-2></ion-col>
+          </ion-row>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+
+  </ion-scroll>
+
+  <ion-footer no-shadow style="background-color:#bbd164 !important;">
+    <ion-toolbar position="bottom">
+      <ion-row *ngFor="let link of links">
+        <ion-col col-3 (click)="message()">
+          <p style="text-align:center;color:white;background-color:#bbd164 !important;cursor:pointer">
+            <!--<ion-icon name="copy"></ion-icon>-->
+            Messages
+            <p>
+        </ion-col>
+
+        <ion-col col-3 (click)="events()">
+          <p style="text-align:center;color:white;background-color:#bbd164 !important;cursor:pointer">
+            <!--<ion-icon name="calendar"></ion-icon>-->
+            Programs
+            <p>
+        </ion-col>
+
+        <!--<ion-col col-3 (click)="weburl(link.donate)">
+        <p style="text-align:center;color:white;cursor:pointer">
+          Donate
+        </p>
+      </ion-col>-->
+        <ion-col col-3 (click)="donate()">
+          <p style="text-align:center;color:white;background-color:#bbd164 !important;cursor:pointer">
+            <!--<ion-icon name="card"></ion-icon>-->
+            Donate
+          </p>
+        </ion-col>
+        <ion-col col-3 (click)="openPage()">
+          <p style="text-align:center;color:white;background-color:#bbd164 !important;cursor:pointer">
+            <!--<ion-icon name="school"></ion-icon>-->
+            School
+          </p>
+        </ion-col>
+      </ion-row>
+
+    </ion-toolbar>
+  </ion-footer>
+
+</ion-content>
